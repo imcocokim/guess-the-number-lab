@@ -3,17 +3,24 @@ const game = {
   biggestNum: 100,
   smallestNum: 1,
   secretNum: null,
-play: function() {
+  prevGuesses:[], //Add prevGuesses property to the game object initialized to an empty array
+  play: function() {
     this.secretNum = Math.floor(Math.random() * 
-      (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
+    (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
+  },
+  getGuess: function() {
+    console.log('get guess')
+    let guess
+    while(!guess || guess >= this.biggestNum || guess <= this.smallestNum) {
+    guess = parseInt(prompt`Enter a number between ${this.smallestNum} and ${this.biggestNum}`)
+    }
+    return guess
   }
+
 }
 
-game.prevGuesses = [] //Add prevGuesses property to the game object initialized to an empty array
-
+game.getGuess()
 //add getGuess method to game that prompts player to enter a guess with a message formatted as: Enter a guess between [smallestNum] and [biggestNum]. Hint - use a template literal for the prompt message.
-
-let getGuess = prompt`Enter a number between ${game.smallestNum} and ${game.biggestNum}`
 
 //Ensure that the `getGuess` method returns a value that:
 // - Is a *number*, not a *string*.
@@ -21,6 +28,7 @@ let getGuess = prompt`Enter a number between ${game.smallestNum} and ${game.bigg
 // - Hints:
 //     - This is a great use case for a `while` loop.
 //     - `parseInt` returns `NaN` if the string cannot be parsed into a number.
+
 
 //From within the `play` method, invoke the `getGuess` method from inside a loop, and add the new guess to the `prevGuesses` array.
 // - Hint: this is an excellent use for a while loop (or even a do...while loop!)
