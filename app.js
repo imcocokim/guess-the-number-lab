@@ -3,16 +3,17 @@ const game = {
   biggestNum: 100,
   smallestNum: 1,
   secretNum: null,
-  prevGuesses: [], //Add prevGuesses property to the game object initialized to an empty array
-  play: function() {
+play: function() {
     this.secretNum = Math.floor(Math.random() * 
       (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
   }
 }
 
-
+game.prevGuesses = [] //Add prevGuesses property to the game object initialized to an empty array
 
 //add getGuess method to game that prompts player to enter a guess with a message formatted as: Enter a guess between [smallestNum] and [biggestNum]. Hint - use a template literal for the prompt message.
+
+
 
 //Ensure that the `getGuess` method returns a value that:
 // - Is a *number*, not a *string*.
