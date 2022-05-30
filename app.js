@@ -3,22 +3,23 @@ const game = {
   biggestNum: 100,
   smallestNum: 1,
   secretNum: null,
-  prevGuesses:[], //Add prevGuesses property to the game object initialized to an empty array
+  prevGuesses:[], 
   play: function() {
     this.secretNum = Math.floor(Math.random() * 
     (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
     do {
-      this.getGuess()
+      this.render()
+      this.prevGuesses.push(this.getGuess())
     } while 
     (this.prevGuesses[this.prevGuesses.length -1] !== this.secretNum)
   },
   getGuess: function() {
     let guess
-    while(!guess || guess >= this.biggestNum || guess <= this.smallestNum) {
-    guess = parseInt(prompt`Enter a number between ${this.smallestNum} and ${this.biggestNum}`)
-    if (isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum) {
+    while(!guess || guess > this.biggestNum || guess < this.smallestNum) {
+      guess = parseInt(prompt(`Enter a number between ${this.smallestNum} and ${this.biggestNum}`))
+      if (isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum) {
       alert('This is not a valid entry')
-    }
+      }
     }
     return guess
   },
@@ -30,10 +31,9 @@ const game = {
         alert(`Your guess is too low. Previous guesses: ${game.prevGuesses}`)
     } else if (this.secretNum < this.prevGuesses[this.prevGuesses.length] - 1){
       alert(`Your guess is too high. Previous guesses: ${game.prevGuesses}`)
+    }
   }
-
 }
-
 game.play()
 //add getGuess method to game that prompts player to enter a guess with a message formatted as: Enter a guess between [smallestNum] and [biggestNum]. Hint - use a template literal for the prompt message.
 
