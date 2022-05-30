@@ -13,13 +13,16 @@ const game = {
     let guess
     while(!guess || guess >= this.biggestNum || guess <= this.smallestNum) {
     guess = parseInt(prompt`Enter a number between ${this.smallestNum} and ${this.biggestNum}`)
+    if (isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum) {
+      alert('This is not a valid entry')
+    }
     }
     return guess
   }
 
 }
 
-game.getGuess()
+game.play()
 //add getGuess method to game that prompts player to enter a guess with a message formatted as: Enter a guess between [smallestNum] and [biggestNum]. Hint - use a template literal for the prompt message.
 
 //Ensure that the `getGuess` method returns a value that:
