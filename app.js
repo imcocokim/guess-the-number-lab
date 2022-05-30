@@ -22,6 +22,10 @@ const game = {
     }
     }
     return guess
+  },
+
+  render: function() {
+    
   }
 
 }
