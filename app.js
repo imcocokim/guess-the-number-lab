@@ -13,7 +13,6 @@ const game = {
     (this.prevGuesses[this.prevGuesses.length -1] !== this.secretNum)
   },
   getGuess: function() {
-    console.log('get guess')
     let guess
     while(!guess || guess >= this.biggestNum || guess <= this.smallestNum) {
     guess = parseInt(prompt`Enter a number between ${this.smallestNum} and ${this.biggestNum}`)
@@ -25,7 +24,12 @@ const game = {
   },
 
   render: function() {
-    
+    if (this.secretNum === this.prevGuesses[this.prevGuesses.length] - 1) {
+      alert(`Congrats! You guessed the number in ${this.prevGuesses.length}`)
+    } else if (this.secretNum > this.prevGuesses[this.prevGuesses.length] - 1){
+        alert(`Your guess is too low. Previous guesses: ${game.prevGuesses}`)
+    } else if (this.secretNum < this.prevGuesses[this.prevGuesses.length] - 1){
+      alert(`Your guess is too high. Previous guesses: ${game.prevGuesses}`)
   }
 
 }
