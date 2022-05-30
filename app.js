@@ -13,7 +13,7 @@ game.prevGuesses = [] //Add prevGuesses property to the game object initialized 
 
 //add getGuess method to game that prompts player to enter a guess with a message formatted as: Enter a guess between [smallestNum] and [biggestNum]. Hint - use a template literal for the prompt message.
 
-
+let getGuess = prompt`Enter a number between ${game.smallestNum} and ${game.biggestNum}`
 
 //Ensure that the `getGuess` method returns a value that:
 // - Is a *number*, not a *string*.
